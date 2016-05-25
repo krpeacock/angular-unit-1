@@ -35,6 +35,7 @@ app.controller("listPosts", function($scope){
   $scope.hideForm = true;
   $scope.showComments = false;
   $scope.commentForm = false;
+  $scope.newComment;
 
   $scope.commentsToggle = function(){
     if ($scope.showComments) $scope.showComments = false;
@@ -84,7 +85,9 @@ app.controller("listPosts", function($scope){
     }
   }
   $scope.callNewComment = function(){
-    this.post.comments.push($scope.newComment);
+    var newComment = {};
+    newComment.text = this.newComment;
+    this.post.comments.push(newComment);
     $scope.commentForm = false;
   } 
 })
