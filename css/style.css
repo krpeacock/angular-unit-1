@@ -36,11 +36,34 @@ h6 {
   padding: 30px;
   border: 1px solid black;
 }
+
+/*.newComment {
+  position:absolute;
+  top: 15vh;
+  left: 50%;
+  margin-left: -35vw;
+  z-index:2;
+  height: 60vh;
+  width: 60vw;
+  background-color: aliceblue;
+  padding: 30px;
+  border: 1px solid black;
+}*/
+
 .postForm input {
   display:inline-block;
   margin-left: 50%;
 }
-
+.listComments {
+  position:relative;
+  left: 200px;
+  align-content: left;
+  border: 1px solid black;
+  width:300px;
+}
+li {
+  margin-left:0;
+}
 
 input {
   margin: 15px;

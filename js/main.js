@@ -1,5 +1,3 @@
-
-
 var app = angular.module("ReaderApp", []);
 app.controller("MainContainer", function($scope){
   $scope.view ={
@@ -11,7 +9,6 @@ app.controller("MainContainer", function($scope){
 
 app.controller("listPosts", function($scope){
   $scope.showDate = function(date){
-    debugger;
     return moment(date)
   }
 
@@ -26,15 +23,24 @@ app.controller("listPosts", function($scope){
         },
         image: "https://media.giphy.com/media/xThuWg7lusylvpAVu8/giphy.gif",
         description: "(it's because I'm good at programming)",
-        comments: ["hi", "coolio", "wowza"],
+        comments: [{text:"hi"}, {text:"coolio"}, {text:"wowza"}],
         voters: [],
         rating: 15
       },
     ]
   };
   $scope.hideForm = true;
+  $scope.showComments = false;
+  $scope.commentForm = false;
 
-
+  $scope.commentsToggle = function(){
+    if ($scope.showComments) $scope.showComments = false;
+    else $scope.showComments = true;
+  }
+  $scope.commentFormToggle = function(){
+    if ($scope.commentForm) $scope.commentForm = false;
+    else $scope.commentForm = true;
+  }
 
   $scope.formToggle = function(){
     if ($scope.hideForm) $scope.hideForm = false;

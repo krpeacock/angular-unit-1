@@ -69,7 +69,7 @@
                       </button>
                       
                       <div class='postForm' ng-hide="hideForm" ng-show="hideForm" ng-cloak>
-                        <form action="#" ng-submit="callNewPost()">
+                        <form ng-submit="callNewPost()">
                           <label for="post[title]">Title</label>
                           <input type="text" ng-model="newTitle">
                           <br>
@@ -100,10 +100,22 @@
                               <p>
                                 {{ post.fromNow() }} 
                                 | 
-                                <a href="#">
-                                  <span class="glyphicon glyphicon-comment"></span> {{post.comments.length}} Comments </a>| <a href="#"><span class="glyphicon glyphicon-pencil"></span> Add Comment </a>
+                                <a href="#" ng-click="commentsToggle()">
+                                  <span class="glyphicon glyphicon-comment"></span> {{post.comments.length}} Comments </a>| <a href="#" ng-click="commentFormToggle()"><span class="glyphicon glyphicon-pencil" ></span> Add Comment </a>
                                 </a>
                               </p>
+                            </div>
+                            <div class="listComments" ng-show="showComments">
+                            <br>
+                              <ul ng-repeat="comment in post.comments">
+                                <li>{{ comment.text }}</li>
+                              </ul>
+                            </div>
+                            <div class="newComment" ng-show="commentForm">
+                              <form action="#" ng-submit="callNewPost()">
+                                <label for="commentText">Comment Text</label>
+                                <input type="text" ng-model="commentText">
+                              </form>
                             </div>
                         </div>
                       </div>
