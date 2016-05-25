@@ -82,5 +82,9 @@ app.controller("listPosts", function($scope){
       $scope.view.posts.push(post);
       $scope.formToggle();
     }
+  }
+  $scope.callNewComment = function(){
+    this.post.comments.push($scope.newComment);
+    $scope.commentForm = false;
   } 
 })

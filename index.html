@@ -95,7 +95,12 @@
                                 {{ post.fromNow() }} 
                                 | 
                                 <a href="#" ng-click="commentsToggle()">
-                                  <span class="glyphicon glyphicon-comment"></span> {{post.comments.length}} Comments </a>| <a href="#" ng-click="commentFormToggle()"><span class="glyphicon glyphicon-pencil" ></span> Add Comment </a>
+                                  <span class="glyphicon glyphicon-comment"></span> 
+                                  <ng-pluralize count="this.post.comments.length" when="{'0': 'No Comments Yet', '1': '1 Comment', 'other': '{} Comments'}">
+                                    
+                                  </ng-pluralize>
+
+                                  </a>| <a href="#" ng-click="commentFormToggle()"><span class="glyphicon glyphicon-pencil" ></span> Add Comment </a>
                                 </a>
                               </p>
                             </div>
@@ -106,9 +111,9 @@
                               </ul>
                             </div>
                             <div class="newComment" ng-show="commentForm">
-                              <form action="#" ng-submit="callNewPost()">
+                              <form action="#" ng-submit="callNewComment()">
                                 <label for="commentText">Comment Text</label>
-                                <input type="text" ng-model="commentText">
+                                <input type="text" ng-model="newComment">
                               </form>
                             </div>
                         </div>
