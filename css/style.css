@@ -23,3 +23,25 @@ h6 {
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
+
+.postForm {
+  position:absolute;
+  top: 15vh;
+  left: 50%;
+  margin-left: -35vw;
+  z-index:2;
+  height: 60vh;
+  width: 60vw;
+  background-color: aliceblue;
+  padding: 30px;
+  border: 1px solid black;
+}
+.postForm input {
+  display:inline-block;
+  margin-left: 50%;
+}
+
+
+input {
+  margin: 15px;
+}
