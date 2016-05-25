@@ -36,6 +36,7 @@ app.controller("listPosts", function($scope){
   $scope.showComments = false;
   $scope.commentForm = false;
   $scope.newComment;
+  $scope.sortSwitch = "getRating()"
 
   $scope.commentsToggle = function(){
     if ($scope.showComments) $scope.showComments = false;

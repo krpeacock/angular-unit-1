@@ -11,7 +11,7 @@
   <script src="js/moment.js"></script>
 </head>
 <body>
-  <div id="wrapper" class="toggled">
+  <div id="wrapper" class="toggled" ng-controller="listPosts">
 
       <!-- Sidebar -->
       <div id="sidebar-wrapper">
@@ -25,13 +25,13 @@
                   <a href="#">Dashboard</a>
               </li>
               <li>
-                  <a href="#">Shortcuts</a>
+                  <a href="#" ng-onclick="sortSwitch='getRating()'">Sort by Votes</a>
               </li>
               <li>
-                  <a href="#">Overview</a>
+                  <a href="#" ng-onclick="sortSwitch='moment.unix(date)'">Sort by Date</a>
               </li>
               <li>
-                  <a href="#">Events</a>
+                  <a href="#" ng-onclick="sortSwitch='title'">Sort by Title</a>
               </li>
               <li>
                   <a href="#">About</a>
@@ -47,7 +47,7 @@
       <!-- /#sidebar-wrapper -->
 
       <!-- Page Content -->
-      <div id="page-content-wrapper" ng-controller="listPosts">
+      <div id="page-content-wrapper">
       <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </a>
@@ -80,7 +80,7 @@
                         </form>
                       </div>
 
-                        <div ng-repeat="post in view.posts | orderBy:'-getRating()'" ng-cloak class="post">
+                        <div ng-repeat="post in view.posts | orderBy:'-' + sortSwitch" ng-cloak class="post">
                           <img class="postImage" src={{post.image}} alt=""/>
                             <div>
                               <h3>
