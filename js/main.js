@@ -24,8 +24,11 @@ app.controller("listPosts", function($scope){
         image: "https://media.giphy.com/media/xThuWg7lusylvpAVu8/giphy.gif",
         description: "(it's because I'm good at programming)",
         comments: [{text:"hi"}, {text:"coolio"}, {text:"wowza"}],
-        voters: [],
-        rating: 15
+        upvoters: [],
+        isUpvoted: function(){ return this.upvoters.indexOf($scope.user) > -1},
+        downvoters: [],
+        isDownvoted: function(){ return this.downvoters.indexOf($scope.user) > -1},
+        getRating: function(){ return this.upvoters.length - this.downvoters.length}
       },
     ]
   };
@@ -46,6 +49,24 @@ app.controller("listPosts", function($scope){
     if ($scope.hideForm) $scope.hideForm = false;
     else $scope.hideForm = true;
   }
+  $scope.callUpvote = function(){
+    if (this.post.upvoters.indexOf(this.user) < 0){
+      this.post.upvoters.push(this.user);
+    }
+    if (this.post.downvoters.indexOf(this.user) > -1){
+      this.post.downvoters.splice(this.post.downvoters.indexOf(this.user), 1);
+    }
+  }
+
+  $scope.callDownvote = function(){
+    if (this.post.downvoters.indexOf(this.user) < 0){
+      this.post.downvoters.push(this.user);
+    }
+    if (this.post.upvoters.indexOf(this.user) > -1){
+      this.post.upvoters.splice(this.post.upvoters.indexOf(this.user), 1);
+    }
+  }
+
   $scope.callNewPost = function(){
     
     if ($scope.newTitle && $scope.newAuthor && $scope.newImage && $scope.newDescription){
@@ -61,5 +82,5 @@ app.controller("listPosts", function($scope){
       $scope.view.posts.push(post);
       $scope.formToggle();
     }
-  }
+  } 
 })

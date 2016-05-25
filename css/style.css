@@ -4,6 +4,13 @@
   margin: 10px;
 
 }
+.upvote{
+  color: orange;
+}
+
+.downvote{
+  color:blue;
+}
 .post{
   float:left;
   margin:10px;
