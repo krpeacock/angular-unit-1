@@ -74,11 +74,19 @@ app.controller("listPosts", function($scope){
       var post = {};
       post.title = $scope.newTitle;
       post.author = $scope.newAuthor;
-      post.date = moment().calendar();
+      post.date = moment().toISOString();
+      post.fromNow = function(){
+          return moment(this.date).fromNow();
+      },
       post.image = $scope.newImage;
       post.description = $scope.newDescription;
       post.comments = [];
       post.rating = 0;
+      post.upvoters = [];
+      post.isUpvoted = function(){ return this.upvoters.indexOf($scope.user) > -1};
+      post.downvoters = [];
+      post.isDownvoted = function(){ return this.downvoters.indexOf($scope.user) > -1};
+      post.getRating = function(){ return this.upvoters.length - this.downvoters.length};
 
       $scope.view.posts.push(post);
       $scope.formToggle();

@@ -80,7 +80,7 @@
                         </form>
                       </div>
 
-                        <div ng-repeat="post in view.posts" ng-cloak class="post">
+                        <div ng-repeat="post in view.posts | orderBy:'-getRating()'" ng-cloak class="post">
                           <img class="postImage" src={{post.image}} alt=""/>
                             <div>
                               <h3>
